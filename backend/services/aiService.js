@@ -1,14 +1,14 @@
 const { GoogleGenerativeAI, SchemaType } = require("@google/generative-ai");
 const { getSystemPrompt, getUserPrompt } = require('../prompts/adGeneratorPrompt');
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(AIzaSyAxNQg4nnqxALhI3Uo9r5lQZKf - eQaILdU);
 
 const executeAdPipeline = async (params) => {
     const systemInstruction = getSystemPrompt();
     const userPrompt = getUserPrompt(params);
 
     const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash",
+        model: "gemini-1.5-pro",
         systemInstruction: systemInstruction,
         generationConfig: {
             responseMimeType: "application/json",
