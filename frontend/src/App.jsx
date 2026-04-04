@@ -26,7 +26,7 @@ function App() {
     setResult(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/generate-ad', formData);
+      const response = await axios.post('https://ai-ad-creator.onrender.com', formData);
       setResult(response.data);
       localStorage.setItem('aiAdResult', JSON.stringify(response.data));
     } catch (err) {
@@ -41,7 +41,7 @@ function App() {
     <div className="min-h-screen pt-12 pb-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
       <div className="w-full max-w-4xl text-center mb-8">
         <div className="flex justify-center mb-4 text-blue-600">
-           <Layers size={48} />
+          <Layers size={48} />
         </div>
         <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">AI Ad Creator Pro</h1>
         <p className="mt-3 text-lg text-gray-500">Build high-converting, policy-safe video ads in seconds.</p>
@@ -50,15 +50,15 @@ function App() {
       <div className="w-full max-w-4xl bg-white shadow-xl rounded-2xl overflow-hidden mb-8 border border-gray-100 p-8">
         <AdInputForm onSubmit={handleGenerate} loading={loading} />
         {error && (
-            <div className="mt-6 bg-red-50 border-l-4 border-red-500 p-4">
-                <p className="text-red-700">{error}</p>
-            </div>
+          <div className="mt-6 bg-red-50 border-l-4 border-red-500 p-4">
+            <p className="text-red-700">{error}</p>
+          </div>
         )}
       </div>
 
       {result && (
         <div className="w-full max-w-4xl">
-           <AdResult result={result} />
+          <AdResult result={result} />
         </div>
       )}
     </div>
