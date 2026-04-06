@@ -115,8 +115,15 @@ function App() {
               onChange={(e) => setPlatform(e.target.value)}
               className="inputPremium"
             >
-              <option>TikTok</option>
-              <option>Instagram Reels</option>
+              <option value="TikTok">🎵 TikTok</option>
+              <option value="Instagram Reels">📸 Instagram Reels</option>
+              <option value="YouTube Shorts">▶️ YouTube Shorts</option>
+              <option value="YouTube Ads">📺 YouTube Ads</option>
+              <option value="Facebook Ads">📘 Facebook Ads</option>
+              <option value="X (Twitter)">🐦 X (Twitter)</option>
+              <option value="LinkedIn">💼 LinkedIn</option>
+              <option value="Snapchat">👻 Snapchat</option>
+              <option value="Pinterest">📌 Pinterest</option>
             </select>
 
             <select
