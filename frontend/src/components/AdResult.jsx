@@ -1,5 +1,8 @@
 import React from 'react';
 
+<pre className="text-xs bg-black text-green-400 p-4">
+  {JSON.stringify(result, null, 2)}
+</pre>
 const AdResult = ({ result }) => {
     if (!result) return null;
 
