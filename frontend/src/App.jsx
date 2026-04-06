@@ -11,20 +11,20 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://ai-video-script-generator-z07c.onrender.com/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          product: "Bags",
-          audience: "Students",
-          platform: "TikTok",
-          goal: "Direct Sales",
-          duration: "30s",
-          tone: "Balanced"
-        })
-      });
+      const res = await fetch("https://ai-video-script-generator-z07c.onrender.com/api/generate-ad", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    product,
+    audience,
+    platform,
+    goal,
+    duration,
+    tone
+  })
+});
 
       const data = await res.json();
       setResult(data);
