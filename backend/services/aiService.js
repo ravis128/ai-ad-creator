@@ -1,6 +1,6 @@
 const Groq = require("groq-sdk");
 const { getSystemPrompt, getUserPrompt } = require('../prompts/adGeneratorPrompt');
-
+console.log("GROQ KEY:", process.env.GROQ_API_KEY);
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const executeAdPipeline = async (params) => {
