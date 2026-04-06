@@ -9,7 +9,7 @@ const executeAdPipeline = async (params) => {
 
     try {
         const completion = await groq.chat.completions.create({
-            model: "llama3-8b-8192", // ✅ STABLE MODEL
+            model: "llama-3.3-70b-versatile", // ✅ STABLE MODEL
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt }
