@@ -18,8 +18,21 @@ const getUserPrompt = (params) => {
 - Duration: ${params.duration}
 - Tone: ${params.tone}
 
-Please generate an output format exactly matching the JSON schema provided. 
-If the tone is 'Aggressive', apply pattern interrupts but avoid policy-violating insults. If 'Balanced/Soft', keep it brand-friendly while remaining persuasive.`;
+If the tone is 'Aggressive', apply pattern interrupts but avoid policy-violating insults. If 'Balanced/Soft', keep it brand-friendly while remaining persuasive.
+
+You MUST respond with a valid JSON object with exactly these keys:
+{
+  "angle": { "selectedAngle": "string", "reasoning": "string" },
+  "mainScript": [{ "timeframe": "string", "segment": "string", "content": "string" }],
+  "scriptVariations": [{ "variationName": "string", "script": "string" }],
+  "hooks": ["string"],
+  "ctas": ["string"],
+  "titles": ["string"],
+  "thumbnailTexts": ["string"],
+  "videoPrompts": [{ "sceneNumber": "string", "prompt": "string" }]
+}
+
+Provide at least 3 items in hooks, ctas, titles, thumbnailTexts, scriptVariations, and videoPrompts.`;
 };
 
 module.exports = { getSystemPrompt, getUserPrompt };

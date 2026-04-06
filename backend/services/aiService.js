@@ -1,91 +1,28 @@
-const { GoogleGenerativeAI, SchemaType } = require("@google/generative-ai");
+const Groq = require("groq-sdk");
 const { getSystemPrompt, getUserPrompt } = require('../prompts/adGeneratorPrompt');
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const executeAdPipeline = async (params) => {
-    const systemInstruction = getSystemPrompt();
+    const systemPrompt = getSystemPrompt();
     const userPrompt = getUserPrompt(params);
 
-    const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash",
-        systemInstruction: systemInstruction,
-        generationConfig: {
-            responseMimeType: "application/json",
-            responseSchema: {
-                type: SchemaType.OBJECT,
-                properties: {
-                    angle: {
-                        type: SchemaType.OBJECT,
-                        properties: {
-                            selectedAngle: { type: SchemaType.STRING },
-                            reasoning: { type: SchemaType.STRING }
-                        },
-                        required: ["selectedAngle", "reasoning"]
-                    },
-                    mainScript: {
-                        type: SchemaType.ARRAY,
-                        items: {
-                            type: SchemaType.OBJECT,
-                            properties: {
-                                timeframe: { type: SchemaType.STRING },
-                                segment: { type: SchemaType.STRING },
-                                content: { type: SchemaType.STRING }
-                            },
-                            required: ["timeframe", "segment", "content"]
-                        }
-                    },
-                    scriptVariations: {
-                        type: SchemaType.ARRAY,
-                        items: {
-                            type: SchemaType.OBJECT,
-                            properties: {
-                                variationName: { type: SchemaType.STRING },
-                                script: { type: SchemaType.STRING }
-                            },
-                            required: ["variationName", "script"]
-                        }
-                    },
-                    hooks: {
-                        type: SchemaType.ARRAY,
-                        items: { type: SchemaType.STRING }
-                    },
-                    ctas: {
-                        type: SchemaType.ARRAY,
-                        items: { type: SchemaType.STRING }
-                    },
-                    titles: {
-                        type: SchemaType.ARRAY,
-                        items: { type: SchemaType.STRING }
-                    },
-                    thumbnailTexts: {
-                        type: SchemaType.ARRAY,
-                        items: { type: SchemaType.STRING }
-                    },
-                    videoPrompts: {
-                        type: SchemaType.ARRAY,
-                        items: {
-                            type: SchemaType.OBJECT,
-                            properties: {
-                                sceneNumber: { type: SchemaType.STRING },
-                                prompt: { type: SchemaType.STRING }
-                            },
-                            required: ["sceneNumber", "prompt"]
-                        }
-                    }
-                },
-                required: ["angle", "mainScript", "scriptVariations", "hooks", "ctas", "titles", "thumbnailTexts", "videoPrompts"]
-            }
-        }
-    });
-
     try {
-        const result = await model.generateContent(userPrompt);
-        const responseText = result.response.text();
+        const completion = await groq.chat.completions.create({
+            model: "llama-3.3-70b-versatile",
+            response_format: { type: "json_object" },
+            messages: [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: userPrompt }
+            ],
+            temperature: 0.8,
+        });
+
+        const responseText = completion.choices[0].message.content;
         return JSON.parse(responseText);
     } catch (e) {
-        console.error("Gemini Generation Error:", e);
-        throw new Error(e.message || "Failed to parse Gemini JSON response");
+        console.error("Groq Generation Error:", e);
+        throw new Error(e.message || "Failed to generate ad pipeline via Groq");
     }
 };
 
