@@ -6,3 +6,21 @@ body {
   background-color: #f8fafc;
   font-family: 'Inter', sans-serif;
 }
+
+
+
+.inputPremium {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.inputPremium:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
