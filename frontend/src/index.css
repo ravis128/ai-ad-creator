@@ -24,3 +24,11 @@ body {
   border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
 }
+
+.inputPremium {
+  @apply w-full p-3 border rounded-xl bg-white/80 backdrop-blur shadow-sm focus:ring-2 focus:ring-purple-400 outline-none;
+}
+
+.badge {
+  @apply px-3 py-1 bg-white/80 backdrop-blur rounded-full shadow-sm border;
+}
