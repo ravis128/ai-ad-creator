@@ -1,6 +1,6 @@
 const Groq = require("groq-sdk");
 const { getSystemPrompt, getUserPrompt } = require('../prompts/adGeneratorPrompt');
-console.log("GROQ KEY:", process.env.GROQ_API_KEY);
+
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const executeAdPipeline = async (params) => {
@@ -9,17 +9,23 @@ const executeAdPipeline = async (params) => {
 
     try {
         const completion = await groq.chat.completions.create({
-            model: "llama-3.3-70b-versatile",
-            response_format: { type: "json_object" },
+            model: "llama3-8b-8192", // ✅ STABLE MODEL
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt }
             ],
-            temperature: 0.8,
+            temperature: 0.7,
         });
 
         const responseText = completion.choices[0].message.content;
-        return JSON.parse(responseText);
+
+        // ⚠️ SAFE PARSE
+        try {
+            return JSON.parse(responseText);
+        } catch {
+            return { raw: responseText }; // fallback
+        }
+
     } catch (e) {
         console.error("Groq Generation Error:", e);
         throw new Error(e.message || "Failed to generate ad pipeline via Groq");
