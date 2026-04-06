@@ -26,7 +26,7 @@ function App() {
     setResult(null);
 
     try {
-      const response = await axios.post('https://ai-video-script-generator-z07c.onrender.com', formData);
+      const response = await axios.post('https://ai-video-script-generator-z07c.onrender.com/api/generate-ad', formData);
       setResult(response.data);
       localStorage.setItem('aiAdResult', JSON.stringify(response.data));
     } catch (err) {
