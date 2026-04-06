@@ -13,10 +13,7 @@ const AdResult = ({ result }) => {
 
     return (
         <div className="space-y-8 animate-fade-in">
-            {/* <pre className="text-xs bg-black text-green-400 p-4">
-                {JSON.stringify(result, null, 2)}
-            </pre> */}
-
+            
             {/* Strategy */}
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">🧠 Strategy Angle</h2>

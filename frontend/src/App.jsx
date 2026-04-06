@@ -9,16 +9,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   const savedResult = localStorage.getItem('aiAdResult');
-  //   if (savedResult) {
-  //     try {
-  //       setResult(JSON.parse(savedResult));
-  //     } catch (e) {
-  //       // ignore
-  //     }
-  //   }
-  // }, []);
   useEffect(() => {
   localStorage.removeItem('aiAdResult');
 }, []);

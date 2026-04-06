@@ -21,36 +21,55 @@ const AdInputForm = ({ onSubmit, loading }) => {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">1. What are you selling?</label>
+
+            {/* MAIN GRID */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                {/* PRODUCT */}
+                <div className="col-span-1 md:col-span-2 flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        1. What are you selling?
+                    </label>
                     <input 
                         required
                         type="text" 
                         name="product"
+                        autoComplete="off"
                         value={formData.product}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
                         placeholder="e.g. A SaaS tool for automating Instagram DM sales"
                     />
                 </div>
                 
-                <div className="col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">2. Who is your audience?</label>
+                {/* AUDIENCE */}
+                <div className="col-span-1 md:col-span-2 flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        2. Who is your audience?
+                    </label>
                     <input 
                         required
                         type="text" 
                         name="audience"
+                        autoComplete="off"
                         value={formData.audience}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
-                        placeholder="e.g. Small business owners, digital creators"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                        placeholder="e.g. Students, creators, business owners"
                     />
                 </div>
 
-                <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Platform</label>
-                    <select name="platform" value={formData.platform} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                {/* PLATFORM */}
+                <div className="flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        Platform
+                    </label>
+                    <select 
+                        name="platform" 
+                        value={formData.platform} 
+                        onChange={handleChange} 
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                    >
                         <option>TikTok</option>
                         <option>Instagram Reels</option>
                         <option>YouTube Shorts</option>
@@ -58,27 +77,51 @@ const AdInputForm = ({ onSubmit, loading }) => {
                     </select>
                 </div>
 
-                <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Goal</label>
-                    <select name="goal" value={formData.goal} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                {/* GOAL */}
+                <div className="flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        Goal
+                    </label>
+                    <select 
+                        name="goal" 
+                        value={formData.goal} 
+                        onChange={handleChange} 
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                    >
                         <option>Direct Sales</option>
                         <option>Lead Generation</option>
                         <option>Brand Awareness</option>
                     </select>
                 </div>
 
-                <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Duration</label>
-                    <select name="duration" value={formData.duration} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                {/* DURATION */}
+                <div className="flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        Duration
+                    </label>
+                    <select 
+                        name="duration" 
+                        value={formData.duration} 
+                        onChange={handleChange} 
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                    >
                         <option>15s</option>
                         <option>30s</option>
                         <option>60s</option>
                     </select>
                 </div>
 
-                <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Tone Intensity</label>
-                    <select name="tone" value={formData.tone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                {/* TONE */}
+                <div className="flex flex-col">
+                    <label className="mb-2 text-sm font-semibold text-gray-700">
+                        Tone Intensity
+                    </label>
+                    <select 
+                        name="tone" 
+                        value={formData.tone} 
+                        onChange={handleChange} 
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                    >
                         <option>Soft (Brand Friendly)</option>
                         <option>Balanced</option>
                         <option>Aggressive (Direct Response)</option>
@@ -86,15 +129,17 @@ const AdInputForm = ({ onSubmit, loading }) => {
                 </div>
             </div>
 
-            <div className="pt-4">
+            {/* BUTTON */}
+            <div className="pt-2">
                 <button 
                     type="submit" 
                     disabled={loading}
-                    className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-md text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors"
+                    className="w-full py-4 rounded-xl text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 transition"
                 >
                     {loading ? 'Generating Pipeline...' : '🚀 Generate Ad Pipeline'}
                 </button>
             </div>
+
         </form>
     );
 };
