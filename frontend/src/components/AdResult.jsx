@@ -13,9 +13,9 @@ const AdResult = ({ result }) => {
 
     return (
         <div className="space-y-8 animate-fade-in">
-            <pre className="text-xs bg-black text-green-400 p-4">
+            {/* <pre className="text-xs bg-black text-green-400 p-4">
                 {JSON.stringify(result, null, 2)}
-            </pre>
+            </pre> */}
 
             {/* Strategy */}
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
