@@ -9,16 +9,19 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // useEffect(() => {
+  //   const savedResult = localStorage.getItem('aiAdResult');
+  //   if (savedResult) {
+  //     try {
+  //       setResult(JSON.parse(savedResult));
+  //     } catch (e) {
+  //       // ignore
+  //     }
+  //   }
+  // }, []);
   useEffect(() => {
-    const savedResult = localStorage.getItem('aiAdResult');
-    if (savedResult) {
-      try {
-        setResult(JSON.parse(savedResult));
-      } catch (e) {
-        // ignore
-      }
-    }
-  }, []);
+  localStorage.removeItem('aiAdResult');
+}, []);
 
   const handleGenerate = async (formData) => {
     setLoading(true);
