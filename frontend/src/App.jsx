@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import HistoryPanel from "./components/HistoryPanel";
 import AdResult from "./components/AdResult";
 
 function App() {
@@ -83,10 +82,10 @@ function App() {
       </div>
 
       {/* MAIN GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-10 mt-10">
+      <div className="flex justify-center px-4 mt-10">
 
         {/* FORM */}
-        <div className="md:col-span-2 backdrop-blur-xl bg-white/70 p-6 rounded-3xl shadow-xl border">
+        <div className="w-full max-w-3xl backdrop-blur-xl bg-white/70 p-6 md:p-8 rounded-3xl shadow-xl border">
 
           {/* INPUTS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,14 +175,15 @@ function App() {
           </div>
         </div>
 
-        {/* HISTORY */}
-        <HistoryPanel />
+       
 
       </div>
 
       {/* RESULT */}
-      <div className="px-4 md:px-10 mt-10">
+      <div className="flex justify-center px-4 mt-10">
+        <div className="w-full max-w-5xl">
         {result && <AdResult result={result} />}
+        </div>
       </div>
 
     </div>
