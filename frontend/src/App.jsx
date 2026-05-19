@@ -62,7 +62,7 @@ function App() {
         <h1 className="text-4xl md:text-5xl font-bold">
           Create High-Converting{" "}
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Video Ads
+            Video script Ads
           </span>{" "}
           in Seconds
         </h1>
